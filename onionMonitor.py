@@ -13,7 +13,7 @@ sqlpass = 'SQL Password'
 sqldb = 'onionstalker'
 sqlcharset = 'utf8mb4'
 
-mail_username = 'torserveralertservice@gmail.com'
+mail_username = 'torstatus@cavefox.net'
 
 print 'Fetching'
 details = manager.query('details')

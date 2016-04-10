@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TorStalk[er] - Tor Relay Monitor</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/css/heroic-features.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="/fonts/fontAwesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">TorStalk[er]</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/register">Register</a>
+                    </li>
+                    <li>
+                        <a href="#">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+        {% if message == 'invalidEmail' %}
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Error!</strong> The Email address you entered was invalid!
+        </div>
+        {% elif message == 'invalidBandwidth' %}
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Error!</strong> The bandwidth amount must be an integer value (eg. 120)!
+        </div>
+        {% elif message == 'relayNotFound' %}
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Error!</strong> No relay was found with the fingerprint you entered; if you just set up this relay please try again in an hour.
+        </div>
+        {% elif message == 'alreadyRegistered' %}
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Error!</strong> The Email address you provided is already setup to receive alerts relating to this relay!
+        </div>
+        {% endif %}
+
+        <!-- Jumbotron Header -->
+        <form method="post" action="/register">
+        <header class="jumbotron hero-spacer">
+            <h3>Register For Relay Status Alerts</h3>
+            <HR>
+            <div class="input-group input-group-lg" style="padding-bottom: 10px;">
+                <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-key"></i></span>
+                <input type="text" name="fingerprint" class="form-control" placeholder="Fingerprint [Required]" aria-describedby="sizing-addon1">
+            </div>
+            <div class="input-group input-group-lg" style="padding-bottom: 10px;">
+                <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-envelope"></i></i></span>
+                <input type="text" name="email" class="form-control" placeholder="E-Mail Address [Required]" aria-describedby="sizing-addon1">
+            </div>
+            <div class="input-group input-group-lg" style="padding-bottom: 10px;">
+                <span class="input-group-addon" id="sizing-addon3"><i class="fa fa-bolt" style="padding-left: 5px; padding-right: 4px;"></i></i></span>
+                <input type="text" name="lowbandwidth" class="form-control" placeholder="Low Bandwidth Alert Level (KB/s) Leave blank for none" aria-describedby="sizing-addon1">
+            </div>
+            <div style="padding-bottom: 10px;">
+                <label class="checkbox-inline"><input type="checkbox" name="downmonitor" value="yes">Monitor for Down Status</label>
+            </div>
+            <p><button class="btn btn-primary btn-large" type="submit">Submit</button>
+            </p>
+        </header>
+        </form>
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><a href="http://kopimi.com/">Kopimi</a></p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

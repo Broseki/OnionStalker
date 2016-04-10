@@ -9,7 +9,7 @@ manager = Manager(OnionSimpleCache())
 
 sqlhost = '127.0.0.1'
 sqluser = 'onionstalker'
-sqlpass = 'AqfJL7WSmuP43Acd'
+sqlpass = 'SQL Password'
 sqldb = 'onionstalker'
 sqlcharset = 'utf8mb4'
 

@@ -60,7 +60,6 @@ def registerPost():
         downmonitor = False
 
     try:
-        lowbandwidth = float(lowbandwidth)
         lowbandwidth = float(lowbandwidth) * 1024.0
     except:
         return render_template('register.html', message='invalidBandwidth')
@@ -219,10 +218,7 @@ def update_get(ident):
         c.execute("SELECT * FROM relays WHERE uuid=%s;", str(ident))
         temp_var = c.fetchone()
 
-        if temp_var['minimumBandwidth'] == 0:
-            minimumBandwidth = ""
-        else:
-            minimumBandwidth = temp_var['minimumBandwidth']
+        minimumBandwidth = temp_var['minimumBandwidth']
 
         relayNick = onionQuery.getnickname(temp_var['fingerprint'])
 
